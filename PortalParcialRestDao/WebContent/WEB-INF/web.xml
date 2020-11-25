@@ -35,7 +35,7 @@
    <env-entry>
       <env-entry-name>ConnectionString</env-entry-name>
       <env-entry-type>java.lang.String</env-entry-type>
-      <env-entry-value>jdbc:sqlserver://localhost;databaseName=das;user=sa;password=1</env-entry-value>
+      <env-entry-value>jdbc:sqlserver://localhost;databaseName=das;user=sa;password=admin2020</env-entry-value>
    </env-entry>
 </web-app>
 

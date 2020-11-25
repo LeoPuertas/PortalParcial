@@ -18,7 +18,7 @@ create table  dbo.usuarios
 );
 go
 
-declare @clave varchar(32) = '1',
+declare @clave varchar(32) = 'admin2020',
         @crypt varbinary(32) 
 
 set @crypt = hashbytes('sha1', @clave + replicate( '*', 32 - len(@clave)))
@@ -79,4 +79,6 @@ begin
 end
 go
 
--- execute dbo.get_datos_usuario @token='7E3FD761-303E-4890-A38C-02DD97EAA04E'
+-- execute dbo.get_datos_usuario @token='75D70A1D-1050-49E9-B42B-FBB073401646'
+
+select  * from dbo.usuarios
