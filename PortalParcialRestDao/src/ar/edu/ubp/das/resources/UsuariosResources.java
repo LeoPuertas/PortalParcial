@@ -38,7 +38,7 @@ public class UsuariosResources {
 	public Response getUsuario(@HeaderParam ("token") String token) {
 		try {
 			Dao<UsuarioBean, String> dao = DaoFactory.getDao("Usuarios", "ar.edu.ubp.das");
-			return Response.status(Response.Status.OK).entity(dao.select(token.split(" ")[1])).build();
+			return Response.status(Response.Status.OK).entity(dao.select(token)).build();
 		}
 		catch (Exception ex){
 			return Response.status(Response.Status.BAD_REQUEST).entity(ex.getMessage()).build();
