@@ -1,0 +1,24 @@
+<form [formGroup]="info" (ngSubmit)="aceptar()">
+  <div class="modal-header">
+      <h4 class="modal-title">Login</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">
+      <div class="form-group">
+          <label for="icorreo">Tu email es</label>
+          <input type="text" class="form-control" id="icorreo" formControlName="correo" placeholder="Escribe tu email" [autofocus]>
+          <small *ngIf="submitted && info.controls.correo.errors?.required" class="text-danger">Debes decirnos tu email</small>
+      </div>
+      <div class="form-group">
+          <label for="iclave">Tu clave es</label>
+          <input type="text" class="form-control" id="iclave" formControlName="clave" placeholder="Escribe tu clave">
+          <small *ngIf="submitted && info.controls.clave.errors?.required" class="text-danger">Debes decirnos tu clave</small>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Cancelar</button>
+      <button type="submit" class="btn btn-success">Aceptar</button>
+  </div>
+</form>
