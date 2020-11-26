@@ -6,11 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ResourceModule } from '@ngx-resource/handler-ngx-http';
 import { MainPageComponent } from './main/pages/main-page/main-page.component';
+import { MainComponent } from './main/components/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
