@@ -1,24 +1,27 @@
-<form [formGroup]="info" (ngSubmit)="aceptar()">
-  <div class="modal-header">
-      <h4 class="modal-title">Login</h4>
-      <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
-      <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-  <div class="modal-body">
-      <div class="form-group">
-          <label for="icorreo">Tu email es</label>
-          <input type="text" class="form-control" id="icorreo" formControlName="correo" placeholder="Escribe tu email" [autofocus]>
-          <small *ngIf="submitted && info.controls.correo.errors?.required" class="text-danger">Debes decirnos tu email</small>
+<div  class="container recuadro">
+  <form [formGroup]="info" novalidate (ngSubmit)="aceptar()">
+      <h2>Login</h2>
+      <br>
+      <div>
+          <div class="form-group">
+              <label for="icorreo">EMAIL: </label>
+              <input type="email" class="form-control" id="icorreo" formControlName="correo" placeholder="Escribe tu email" maxlength="255" [autofocus]>
+              <small *ngIf="submitted && form.correo.errors"  class="text-danger">
+                  <span *ngIf="form.correo.errors.required">Debes informar el email</span>
+                  <span *ngIf="form.correo.errors.email || form.correo.errors.pattern" >El email informado no es válido</span>
+              </small>
+          </div>
+
+          <div class="form-group">
+              <label for="iclave">CONTRASEÑA: </label>
+              <input type="password" class="form-control" id="iclave" formControlName="clave" placeholder="Escribe tu clave">
+              <small *ngIf="submitted && form.clave.errors"  class="text-danger">
+                  <span *ngIf="form.clave.errors.required">Debes informar la clave</span>
+              </small>
+          </div>
       </div>
-      <div class="form-group">
-          <label for="iclave">Tu clave es</label>
-          <input type="text" class="form-control" id="iclave" formControlName="clave" placeholder="Escribe tu clave">
-          <small *ngIf="submitted && info.controls.clave.errors?.required" class="text-danger">Debes decirnos tu clave</small>
+      <div >
+          <button type="submit" class="btn btn-outline-success btn-lg btn-block">Ingresar</button>
       </div>
-  </div>
-  <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close()">Cancelar</button>
-      <button type="submit" class="btn btn-success">Aceptar</button>
-  </div>
-</form>
+    </form>
+</div>

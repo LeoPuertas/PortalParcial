@@ -1,7 +1,7 @@
 import { LoginResourceService } from './../../api/services/login-resource.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +11,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class LoginComponent implements OnInit {
 
   info: FormGroup;
-  submitted = false;
-  token: string;
+  submitted: boolean = false;
 
-  constructor(private _fb: FormBuilder, private _service: LoginResourceService, public activeModal: NgbActiveModal) { }
+  constructor(private _fb: FormBuilder, private _service: LoginResourceService, private _route: Router) { }
 
   ngOnInit(): void {
     this.info = this._fb.group({
@@ -26,16 +25,19 @@ export class LoginComponent implements OnInit {
   aceptar(): void {
     this.submitted = true;
     if (this.info.valid) {
-      console.log(this.info.value);
       this._service.login(this.info.value).subscribe((token: string) => {
-          console.log('token', token);
-          this.token = token;
+        if (token != null) {
+          localStorage.setItem('token', token);
+          this._route.navigate(['/main']);
+        }
+      },
+      (err) => {
+        console.log(err);
       });
-
-      //console.log(this.token);
-      //this.activeModal.close(this.info.value);
-      this.activeModal.close(this.token);
     }
   }
 
+  get form(): any {
+    return this.info.controls;
+  }
 }
