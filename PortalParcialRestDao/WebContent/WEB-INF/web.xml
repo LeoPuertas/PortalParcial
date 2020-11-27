@@ -22,7 +22,7 @@
       <servlet-name>JAXRSServlet</servlet-name>
       <url-pattern>/api/*</url-pattern>
    </servlet-mapping>
-     <filter>
+   <filter>
   	<filter-name>CorsFilter</filter-name>
   	<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
   	<init-param>
@@ -36,7 +36,7 @@
   	<init-param>
       <param-name>cors.allowed.headers</param-name>
       <!-- add the headers here, that you want to read from REQUEST -->
-      <param-value>Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers</param-value>
+      <param-value>Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,token,Authorization</param-value>
   	</init-param>
   	<init-param>
       <param-name>cors.exposed.headers</param-name>
