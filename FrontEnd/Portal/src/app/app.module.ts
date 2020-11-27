@@ -10,19 +10,23 @@ import { MainComponent } from './main/components/main/main.component';
 import { LoaderComponent } from './core/layout/loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './core/services/inteceptors/http-interceptor.service';
+import { FormsModule } from '@angular/forms';
+import { MessageDialogComponent } from './core/layout/message-dialog/message-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
     MainComponent,
-    LoaderComponent
+    LoaderComponent,
+    MessageDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ResourceModule.forRoot(),
-    LoginModule
+    LoginModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

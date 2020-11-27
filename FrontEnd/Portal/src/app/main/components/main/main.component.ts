@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  usuario: IUsuario;
+  usuario = { nombre: '', apellido: '', correo: ''} as IUsuario;
   constructor(private _service: MainService) { }
 
   ngOnInit(): void {
@@ -17,11 +17,13 @@ export class MainComponent implements OnInit {
   }
 
   obtenerUsuario(): void {
-    var token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (token != null) {
-      this._service.getUsuario().subscribe((usuario: IUsuario) => {
-        console.log('usuario',usuario);
-        this.usuario = usuario;
+      this._service.getUsuario().subscribe((usuario: IUsuario[]) => {
+        if (usuario.length > 0)
+        {
+          this.usuario = usuario[0];
+        }
       },
       (err) => {
         console.log(err);

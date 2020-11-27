@@ -16,5 +16,5 @@ export class MainService extends Resource {
     path: '/usuario',
     responseBodyType: ResourceResponseBodyType.Json
   })
-  getUsuario: IResourceMethodObservable<void, IUsuario>;
+  getUsuario: IResourceMethodObservable<void, IUsuario[]>;
 }

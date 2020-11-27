@@ -15,7 +15,6 @@ export class LoaderComponent implements OnInit, OnDestroy {
   constructor(private _service: LoaderService) { }
 
   ngOnInit(): void {
-    console.log('Loader');
     this._subscription = this._service.getObservable().subscribe((ref: Loader) => {
       this._loaded = ref.loaded;
     });

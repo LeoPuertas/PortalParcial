@@ -12,12 +12,14 @@ export class AuthService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     var token = localStorage.getItem('token');
-    if (token != null)
+    if (token)
     {
       return true;
     }
-    this._route.navigate(['/login']);
-    return false;
+    else {
+      this._route.navigate(['/login']);
+      return false;
+    }
   }
 }
 
